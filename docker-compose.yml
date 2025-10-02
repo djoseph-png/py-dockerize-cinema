@@ -32,9 +32,10 @@ services:
     command: >
       sh -c "python manage.py wait_for_db &&
              python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
              python manage.py runserver 0.0.0.0:8000"
     volumes:
-      - ./:/app              # <-- agora o /app vê seu manage.py
+      - ./:/app
       - media_data:/vol/web/media
       - static_data:/vol/web/static
 
